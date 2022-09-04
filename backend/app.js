@@ -10,6 +10,7 @@ const cardsRouter = require('./routes/cards');
 const NotFoundError = require('./errors/NotFoundError');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
+const cors = require('./middlewares/cors');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -21,6 +22,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', { // база данных
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cors);
 
 app.use(requestLogger);
 
