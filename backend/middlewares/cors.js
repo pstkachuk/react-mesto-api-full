@@ -1,5 +1,6 @@
 const allowedCors = [
   'http://localhost:3000',
+  'http://localhost:3010',
   'http://sfd.nomorepartiesxyz.ru/',
   'https://sfd.nomorepartiesxyz.ru/',
 ];
@@ -12,7 +13,8 @@ const cors = (req, res, next) => {
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   }
-  res.header('Access-Control-Allow-Origin', '*');
+  // res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', true);
 
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 

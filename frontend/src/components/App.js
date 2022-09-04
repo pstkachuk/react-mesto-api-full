@@ -51,9 +51,9 @@ function App() {
     })
   }, [])
 
-  useEffect(() => {
-    handleTokenCheck();
-  }, [])
+  // useEffect(() => {
+  //   handleTokenCheck();
+  // }, [])
 
   function handleSetCardsState(card) {
     setCards((state) => state.map((cardItem) => cardItem._id === card._id ? card : cardItem));
@@ -205,9 +205,9 @@ function App() {
   function handleLogin(email, password) {   //запрос на авторизацию
     auth.authorization(email, password)
     .then((res) => {
-      if (res.token) {
+      if (res.message) {
         setLoggedIn(true);
-        localStorage.setItem('token', res.token);
+        // localStorage.setItem('token', res.token);
         setUserEmail(email);
         history.push('/')
       }
@@ -222,23 +222,23 @@ function App() {
     })
   }
 
-  function handleTokenCheck() {   //проверка токена
-    const token = localStorage.getItem('token');
-    if (token) {
-      auth.tokenCheck(token)
-      .then((res) => {
-        setLoggedIn(true);
-        setUserEmail(res.data.email);
-        history.push('/');
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-    }
-  }
+  // function handleTokenCheck() {   //проверка токена
+  //   const token = localStorage.getItem('token');
+  //   if (token) {
+  //     auth.tokenCheck(token)
+  //     .then((res) => {
+  //       setLoggedIn(true);
+  //       setUserEmail(res.data.email);
+  //       history.push('/');
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
+  //   }
+  // }
 
   function handleSignOut() {    //выход
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
     setUserEmail('')
     history.push('/signin');
   }

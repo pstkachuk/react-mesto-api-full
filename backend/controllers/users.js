@@ -130,6 +130,8 @@ const login = (req, res, next) => {
       res.cookie('auth', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
+        sameSite: true,
+        secure: false,
       })
         .send({ message: 'Авторизация прошла успешно' });
     })

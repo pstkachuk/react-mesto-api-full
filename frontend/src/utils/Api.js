@@ -14,7 +14,8 @@ export class Api {
   getUserInfo() {
     return fetch(this._baseUrl + '/users/me', {
       method: 'GET',
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     })
     .then(this._requestIsOk);
   }
@@ -22,7 +23,8 @@ export class Api {
   getCards() {
     return fetch(this._baseUrl + '/cards', {
       method: 'GET',
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     })
     .then(this._requestIsOk);
   }
@@ -38,6 +40,7 @@ export class Api {
     return fetch(this._baseUrl + '/users/me', {
       method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name,
         about
@@ -50,6 +53,7 @@ export class Api {
     return fetch(this._baseUrl + '/cards', {
       method: 'POST',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name,
         link
@@ -61,7 +65,8 @@ export class Api {
   deleteCard(id) {
     return fetch(this._baseUrl + `/cards/${id}`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     })
     .then(this._requestIsOk);
   }
@@ -69,7 +74,8 @@ export class Api {
   like(id) {
     return fetch(this._baseUrl + `/cards/${id}/likes`, {
       method: 'PUT',
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     })
     .then(this._requestIsOk);
   }
@@ -77,7 +83,8 @@ export class Api {
   deleteLike(id) {
     return fetch(this._baseUrl + `/cards/${id}/likes`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     })
     .then(this._requestIsOk);
   }
@@ -86,6 +93,7 @@ export class Api {
     return fetch(this._baseUrl + '/users/me/avatar', {
       method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         avatar
       })
@@ -95,11 +103,11 @@ export class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://nomoreparties.co/v1/cohort-42',
+  baseUrl: 'http://localhost:3000',
   headers: {
-    authorization: 'eb15ed8a-0dd7-4417-b669-3dcdaf5b9cc7',
+    // authorization: 'eb15ed8a-0dd7-4417-b669-3dcdaf5b9cc7',
     'Content-Type': 'application/json'
-  }
+  },
 })
 
 export default api;

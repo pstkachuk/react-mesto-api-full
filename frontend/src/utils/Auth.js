@@ -18,6 +18,7 @@ class Auth {
         headers: { 
           'Content-Type': 'application/json' 
         },
+        // credentials: 'include',
         body: JSON.stringify({
           email,
           password
@@ -35,6 +36,7 @@ class Auth {
         headers: { 
           'Content-Type': 'application/json' 
         },
+        credentials: 'include',
         body: JSON.stringify({
           email,
           password
@@ -44,19 +46,20 @@ class Auth {
     .then(this._requestIsOk);
   }
 
-  tokenCheck(token) {
-    return fetch(
-      `${this._baseUrl}/users/me`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization' : `Bearer ${token}`
-        }
-      }
-    )
-    .then(this._requestIsOk);
-  }
+  // tokenCheck(token) {
+  //   return fetch(
+  //     `${this._baseUrl}/users/me`,
+  //     {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization' : `Bearer ${token}`
+  //       },
+  //       credentials: 'include',
+  //     }
+  //   )
+  //   .then(this._requestIsOk);
+  // }
 }
 
 const auth = new Auth({baseUrl: 'http://localhost:3000'});
