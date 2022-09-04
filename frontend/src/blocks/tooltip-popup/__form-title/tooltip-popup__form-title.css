@@ -1,0 +1,16 @@
+.tooltip-popup__form-title {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: 27px;
+  text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  .tooltip-popup__form-title {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+}

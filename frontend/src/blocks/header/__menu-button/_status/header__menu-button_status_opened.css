@@ -1,0 +1,16 @@
+.header__menu-button_status_opened::after,
+.header__menu-button_status_opened::before {
+  content: "";
+  position: absolute;
+  top: 37%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform: rotate(45deg);
+  background-color: #fff;
+  box-shadow: none;
+}
+
+.header__menu-button_status_opened::before {
+  transform: rotate(-45deg);
+}

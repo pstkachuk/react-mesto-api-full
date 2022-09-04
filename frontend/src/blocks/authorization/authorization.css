@@ -1,0 +1,18 @@
+.authorization {
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 112px;
+  max-width: 358px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+@media screen and (max-width: 500px) {
+  .authorization {
+   max-width: 260px;
+    margin-top: 40px;
+    margin-bottom: 77px;
+  }
+}

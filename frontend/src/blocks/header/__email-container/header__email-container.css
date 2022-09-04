@@ -1,0 +1,14 @@
+.header__email-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 550px) {
+  .header__email-container {
+    display: none;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+    padding-bottom: 40px;
+  }
+}

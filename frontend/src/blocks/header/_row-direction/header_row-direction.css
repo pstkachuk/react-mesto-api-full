@@ -1,0 +1,5 @@
+@media screen and (max-width: 550px) {
+  .header_row-direction {
+    flex-direction: row;
+  }
+}

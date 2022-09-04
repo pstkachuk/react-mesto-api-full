@@ -1,0 +1,22 @@
+.authorization__input {
+  height: 27px;
+  border: 0;
+  border-bottom: 2px solid rgba(204, 204, 204, 1);
+  padding: 0;
+  padding-bottom: 13px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  box-sizing: border-box;
+  outline: 0;
+  background-color: transparent;
+  color: #fff;
+}
+.authorization__input:first-of-type {
+  margin-bottom: 30px;
+}
+
+.authorization__input:focus {
+  outline: 1px solid rgba(255, 255, 255);
+}
