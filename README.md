@@ -2,5 +2,5 @@
 Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями.
 
 ## Ссылки:
-* https://sfd.nomorepartiesxyz.ru/
-* https://api.sfd.nomorepartiesxyz.ru/
+* Фронтенд https://sfd.nomorepartiesxyz.ru/
+* Бэкенд https://api.sfd.nomorepartiesxyz.ru/
