@@ -18,7 +18,6 @@ class Auth {
         headers: { 
           'Content-Type': 'application/json' 
         },
-        // credentials: 'include',
         body: JSON.stringify({
           email,
           password
@@ -34,7 +33,6 @@ class Auth {
       {
         method: 'POST',
         headers: { 
-          // 'Accept': 'application/json',
           'Content-Type': 'application/json' 
         },
         credentials: 'include',
@@ -53,7 +51,6 @@ class Auth {
       {
         method: 'POST',
         headers: { 
-          // 'Accept': 'application/json',
           'Content-Type': 'application/json' 
         },
         credentials: 'include',       
@@ -69,7 +66,6 @@ class Auth {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          // 'Authorization' : `Bearer ${token}`
         },
         credentials: 'include',
       }

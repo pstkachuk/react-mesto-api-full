@@ -133,7 +133,6 @@ const login = (req, res, next) => {
         sameSite: false,
         secure: false,
       })
-        // .send({ message: 'Авторизация прошла успешно' });
         .send({
           _id: user._id,
           name: user.name,

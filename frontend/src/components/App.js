@@ -35,37 +35,7 @@ function App() {
   const [tooltip, setTooltip] = useState({});   //данные для окна с сообщением
   const history = useHistory();
 
-  
-  // useEffect(() => {   //запрос данных пользователя
-  //   api.getUserInfo()
-  //   .then((res) => {
-  //     // if (res.email) {
-  //       setLoggedIn(true);
-  //       setCurrentUser(res);
-  //       setUserEmail(res.email);
-  //       history.push('/');
-  //     // }
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   })
-  // }, [history, loggedIn])
-
-  // useEffect(() => {   //запрос карточек
-  //   api.getCards()
-  //   .then(setCards)
-  //   .catch((err) => {
-  //     console.log(err);
-  //   })
-  // }, [history, loggedIn])
-
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     history.push('/');
-  //   }
-  // }, [loggedIn, history])
-
-  const checkAuth = () => {
+   const checkAuth = () => {
     auth.tokenCheck()
     .then((data) => {
       if (data) {
@@ -87,9 +57,7 @@ function App() {
     if (loggedIn) {
       api.getAllData([])
       .then(([userData, cards]) => {        //получить карточки и пользователя
-          // setLoggedIn(true);
-        setCurrentUser(userData);
-          // setUserEmail(userData.email);
+        setCurrentUser(userData);         
         setCards(cards);
         history.push('/')
       })
@@ -251,8 +219,6 @@ function App() {
     .then((res) => {
       if (res._id) {
         setLoggedIn(true);
-        // setCurrentUser(res);
-        // localStorage.setItem('token', res.token);
         setUserEmail(res.email);
         history.push('/')
       }
@@ -267,23 +233,7 @@ function App() {
     })
   }
 
-  // function handleTokenCheck() {   //проверка токена
-  //   const token = localStorage.getItem('token');
-  //   if (token) {
-  //     auth.tokenCheck(token)
-  //     .then((res) => {
-  //       setLoggedIn(true);
-  //       setUserEmail(res.data.email);
-  //       history.push('/');
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  //   }
-  // }
-
   function handleSignOut() {    //выход
-    // localStorage.removeItem('token');
     auth.logout();
     setLoggedIn(false);
     setUserEmail('');
