@@ -35,32 +35,76 @@ function App() {
   const [tooltip, setTooltip] = useState({});   //данные для окна с сообщением
   const history = useHistory();
 
-  useEffect(() => {   //запрос данных пользователя
-    api.getUserInfo()
-    .then(setCurrentUser)
-    .catch((err) => {
-      console.log(err);
-    })
-  }, [])
+  
+  // useEffect(() => {   //запрос данных пользователя
+  //   api.getUserInfo()
+  //   .then((res) => {
+  //     // if (res.email) {
+  //       setLoggedIn(true);
+  //       setCurrentUser(res);
+  //       setUserEmail(res.email);
+  //       history.push('/');
+  //     // }
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   })
+  // }, [history, loggedIn])
 
-  useEffect(() => {   //запрос карточек
-    api.getCards()
-    .then(setCards)
-    .catch((err) => {
-      console.log(err);
-    })
-  }, [])
+  // useEffect(() => {   //запрос карточек
+  //   api.getCards()
+  //   .then(setCards)
+  //   .catch((err) => {
+  //     console.log(err);
+  //   })
+  // }, [history, loggedIn])
 
   // useEffect(() => {
-  //   handleTokenCheck();
-  // }, [])
+  //   if (loggedIn) {
+  //     history.push('/');
+  //   }
+  // }, [loggedIn, history])
+
+  const checkAuth = () => {
+    auth.tokenCheck()
+    .then((data) => {
+      if (data) {
+        setUserEmail(data.email);
+        setLoggedIn(true);
+        history.push('/')
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+  
+  useEffect(() => {
+      checkAuth();
+  }, [])
+  
+  useEffect(() => {     
+    if (loggedIn) {
+      api.getAllData([])
+      .then(([userData, cards]) => {        //получить карточки и пользователя
+          // setLoggedIn(true);
+        setCurrentUser(userData);
+          // setUserEmail(userData.email);
+        setCards(cards);
+        history.push('/')
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }     
+  }, [loggedIn])  
 
   function handleSetCardsState(card) {
     setCards((state) => state.map((cardItem) => cardItem._id === card._id ? card : cardItem));
   }  
 
   function handleCardLike(card) {     //поставить/убрать лайк
-    const isLiked = card.likes.some(item => item._id === currentUser._id);
+    const isLiked = card.likes.some(item => item === currentUser._id);
     if (isLiked) {
       api.deleteLike(card._id)
       .then(handleSetCardsState)
@@ -205,10 +249,11 @@ function App() {
   function handleLogin(email, password) {   //запрос на авторизацию
     auth.authorization(email, password)
     .then((res) => {
-      if (res.message) {
+      if (res._id) {
         setLoggedIn(true);
+        // setCurrentUser(res);
         // localStorage.setItem('token', res.token);
-        setUserEmail(email);
+        setUserEmail(res.email);
         history.push('/')
       }
     })
@@ -239,7 +284,9 @@ function App() {
 
   function handleSignOut() {    //выход
     // localStorage.removeItem('token');
-    setUserEmail('')
+    auth.logout();
+    setLoggedIn(false);
+    setUserEmail('');
     history.push('/signin');
   }
 

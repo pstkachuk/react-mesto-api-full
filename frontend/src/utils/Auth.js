@@ -34,6 +34,7 @@ class Auth {
       {
         method: 'POST',
         headers: { 
+          // 'Accept': 'application/json',
           'Content-Type': 'application/json' 
         },
         credentials: 'include',
@@ -46,20 +47,35 @@ class Auth {
     .then(this._requestIsOk);
   }
 
-  // tokenCheck(token) {
-  //   return fetch(
-  //     `${this._baseUrl}/users/me`,
-  //     {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization' : `Bearer ${token}`
-  //       },
-  //       credentials: 'include',
-  //     }
-  //   )
-  //   .then(this._requestIsOk);
-  // }
+  logout() {
+    return fetch(
+      `${this._baseUrl}/signout`,
+      {
+        method: 'POST',
+        headers: { 
+          // 'Accept': 'application/json',
+          'Content-Type': 'application/json' 
+        },
+        credentials: 'include',       
+      }
+    )
+    .then(this._requestIsOk);
+  }
+
+  tokenCheck() {
+    return fetch(
+      `${this._baseUrl}/users/me`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          // 'Authorization' : `Bearer ${token}`
+        },
+        credentials: 'include',
+      }
+    )
+    .then(this._requestIsOk);
+  }
 }
 
 const auth = new Auth({baseUrl: 'http://localhost:3000'});

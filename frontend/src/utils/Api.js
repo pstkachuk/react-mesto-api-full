@@ -75,7 +75,7 @@ export class Api {
     return fetch(this._baseUrl + `/cards/${id}/likes`, {
       method: 'PUT',
       headers: this._headers,
-      credentials: 'include',
+      credentials: 'include',      
     })
     .then(this._requestIsOk);
   }

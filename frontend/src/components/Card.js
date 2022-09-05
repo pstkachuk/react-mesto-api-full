@@ -3,9 +3,9 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Card({card, onCardClick, onCardLike, onCardDelete}) {
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = card.owner._id === currentUser._id;  //проверка владельца карточки
+  const isOwn = card.owner === currentUser._id;  //проверка владельца карточки
   const cardDeleteButtonClassName = (`element__delete-button ${!isOwn && 'element__delete-button_hide'}`); //Скрыть кнопку, если текущий пользователь не владелец карточки
-  const isLiked = card.likes.some(item => item._id === currentUser._id);  //текущий пользователь "лайкнул" карточку
+  const isLiked = card.likes.some(item => item === currentUser._id);  //текущий пользователь "лайкнул" карточку
   const cardLikeButtonClassName = (`element__like-button ${isLiked && 'element__like-button_active'}`);  //отобразить лайк
 
   function handleClick() {

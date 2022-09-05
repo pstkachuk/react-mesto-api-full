@@ -20,7 +20,7 @@ const createCard = (req, res, next) => {
 
 //  вернуть все карточки
 const getCards = (req, res, next) => {
-  Card.find({})
+  Card.find({}).sort({ createdAt: -1 })
     .then((cards) => {
       res.send(cards);
     })

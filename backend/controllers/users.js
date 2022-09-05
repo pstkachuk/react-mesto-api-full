@@ -130,12 +130,24 @@ const login = (req, res, next) => {
       res.cookie('auth', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
-        sameSite: true,
+        sameSite: false,
         secure: false,
       })
-        .send({ message: 'Авторизация прошла успешно' });
+        // .send({ message: 'Авторизация прошла успешно' });
+        .send({
+          _id: user._id,
+          name: user.name,
+          about: user.about,
+          avatar: user.avatar,
+          email: user.email,
+        });
     })
     .catch(next);
+};
+
+const logout = (req, res) => {
+  res.clearCookie('auth')
+    .send({ message: 'Пользователь вышел из сессии' });
 };
 
 module.exports = {
@@ -145,5 +157,6 @@ module.exports = {
   setUserInfo,
   setAvatar,
   login,
+  logout,
   getUserMe,
 };

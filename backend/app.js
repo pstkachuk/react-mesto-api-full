@@ -8,12 +8,13 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const NotFoundError = require('./errors/NotFoundError');
-const { login, createUser } = require('./controllers/users');
+const { login, createUser, logout } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const cors = require('./middlewares/cors');
 
 const { PORT = 3000 } = process.env;
 const app = express();
+app.use(cors);
 
 mongoose.connect('mongodb://localhost:27017/mestodb', { // база данных
   useNewUrlParser: true,
@@ -22,8 +23,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', { // база данных
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(cors);
 
 app.use(requestLogger);
 
@@ -42,6 +41,8 @@ app.post('/signup', celebrate({
     password: Joi.string().required(),
   }),
 }), createUser);
+
+app.post('/signout', logout);
 
 app.use('/', auth, usersRouter);
 app.use('/', auth, cardsRouter);
