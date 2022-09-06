@@ -21,7 +21,7 @@
     "eject": "react-scripts eject",
     "predeploygh": "npm run build",
     "deploygh": "gh-pages -d build",
-    "deploy": "npm run build && scp -r ./build/* pavel@51.250.3.163:/home/pavel/frontend"
+    "deploy": "npm run build && scp -r ./build/* pavel@51.250.3.163:/home/pavel/react-mesto-api-full/frontend"
   },
   "eslintConfig": {
     "extends": [
