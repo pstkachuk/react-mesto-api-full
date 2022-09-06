@@ -74,7 +74,6 @@ class Auth {
   }
 }
 
-// const auth = new Auth({baseUrl: 'https://api.sfd.nomorepartiesxyz.ru'});
-const auth = new Auth({baseUrl: 'http://localhost:3000'});
+const auth = new Auth({baseUrl: 'https://api.sfd.nomorepartiesxyz.ru'});
 
 export default auth;
