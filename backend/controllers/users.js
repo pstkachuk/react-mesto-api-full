@@ -130,8 +130,8 @@ const login = (req, res, next) => {
       res.cookie('auth', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
-        sameSite: false,
-        secure: false,
+        sameSite: true,
+        secure: true,
       })
         .send({
           _id: user._id,
