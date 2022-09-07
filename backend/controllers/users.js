@@ -132,6 +132,9 @@ const login = (req, res, next) => {
         httpOnly: true,
         // sameSite: false,
         // secure: NODE_ENV === 'production',
+
+        // куки не работают на localhost, видимо из-за политики браузера
+        // при таких настройках куки корректно работают в FireFox на localhost:3010
       })
         .send({
           _id: user._id,
