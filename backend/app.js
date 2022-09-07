@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.get('/crash-test', () => {
+app.get('/crash-test', () => { // убрать после ревью
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);

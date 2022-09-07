@@ -4,3 +4,5 @@
 ## Ссылки:
 * Фронтенд https://sfd.nomorepartiesxyz.ru/
 * Бэкенд https://api.sfd.nomorepartiesxyz.ru/
+
+* публичный ip-адресс сервера: 130.193.50.68
