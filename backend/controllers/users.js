@@ -60,7 +60,6 @@ const getUserMe = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       res.send(user);
-      console.log(NODE_ENV === 'production');
     })
     .catch(next);
 };
