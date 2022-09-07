@@ -6,6 +6,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
+console.log(NODE_ENV === 'production');
 
 //  создать пользователя
 const createUser = (req, res, next) => {
