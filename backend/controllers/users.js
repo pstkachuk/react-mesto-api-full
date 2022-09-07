@@ -6,7 +6,6 @@ const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
-console.log(NODE_ENV === 'production');
 
 //  создать пользователя
 const createUser = (req, res, next) => {
@@ -61,6 +60,7 @@ const getUserMe = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       res.send(user);
+      console.log(NODE_ENV === 'production');
     })
     .catch(next);
 };
